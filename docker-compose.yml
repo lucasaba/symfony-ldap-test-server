@@ -5,12 +5,10 @@ services:
       context: ./docker
     environment:
       LDAP_ADMIN_PASSWORD: symfony
-      LDAP_BASE_DN: dc=symfony,dc=com
+      LDAP_BASE_DN: "dc=symfony,dc=com"
+      LDAP_SEED_INTERNAL_LDIF_PATH: "/ldif-data"
     ports:
       - 3389:389
-    volumes:
-      - ldap_data:/var/lib/ldap
-      - ldap_config:/etc/ldap/slapd.d
   ldap_server_admin:
     image: osixia/phpldapadmin:0.7.2
     ports:
@@ -18,6 +16,3 @@ services:
     environment:
       PHPLDAPADMIN_LDAP_HOSTS: ldap_server
       PHPLDAPADMIN_HTTPS: 'false'
-volumes:
-  ldap_data:
-  ldap_config:
