@@ -8,7 +8,7 @@ services:
       LDAP_BASE_DN: "dc=symfony,dc=com"
       LDAP_SEED_INTERNAL_LDIF_PATH: "/ldif-data"
     ports:
-      - 3389:389
+      - 389:3389
   ldap_server_admin:
     image: osixia/phpldapadmin:0.7.2
     ports:
